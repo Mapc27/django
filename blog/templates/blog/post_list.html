@@ -1,24 +1,32 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Этот веб-портал создан Марселем для угнетения чувств Шомиля">
-    <title>Шамиль, ты гандон</title>
-</head>
-<body>
-    <div>
-    <style>
-        p {
-            font-size: 160%;
-            border: 500px;
-            text-align:center;
-            position: relative;
-            top: 1000px;
-        }
-    </style>
-        <h1 style="text-align: center">Приветствую тебя, искатель</h1>
-        <h2 style="text-align: center">Пролистай в конец</h2>
-        <p>А теперь иди отсюда</p>
-    </div>
-</body>
+    <head>
+        <title>Mapc's Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Mapc's Blog</a></h1>
+        </div>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>{{ post.published_date }}</p>
+                            </div>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
